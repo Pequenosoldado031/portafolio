@@ -2,8 +2,18 @@ import '../../assets/scss/basis/_index.scss';
 import './classes.scss';
 
 import {Button} from "@mui/material";
+import {useContext, useEffect} from "react";
+import {LoadingContext} from "../../context/Loading/LoadingContext";
 
 export const Classes = () => {
+
+    const {setLoading, loadingState} = useContext(LoadingContext);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 3000)
+    }, [loadingState.isLoading])
 
   return (
     <div className={'global-wrapper'}>
@@ -149,7 +159,7 @@ export const Classes = () => {
 
       <div className={'three-buttons-field'}>
           <Button disabled={true} variant={'outlined'}>Inactive</Button>
-          <Button variant={'outlined'}>Primary</Button>
+          <Button variant={'outlined'} onClick={() => setLoading(true)}>Primary</Button>
           <Button variant={'outlined'} color={'error'}>SECONDARY</Button>
       </div>
 
