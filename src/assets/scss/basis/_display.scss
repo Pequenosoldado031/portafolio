@@ -1,4 +1,6 @@
-
+@import "color";
+@import "font"
+;
 .scrollbar {
   overflow: auto;
 
@@ -46,4 +48,36 @@
   > * {
     margin-bottom: 1em;
   }
+}
+
+body {
+  .css-1rwt2y5-MuiButtonBase-root-MuiButton-root.Mui-disabled {
+    border-color: $color-white;
+    background: $color-gray;
+    @extend .text-r-14-white;
+    cursor: not-allowed;
+  }
+
+  .css-1rwt2y5-MuiButtonBase-root-MuiButton-root {
+    @extend .text-r-14-blue;
+    border-color: $color-blue;
+
+  }
+
+  .css-1rwt2y5-MuiButtonBase-root-MuiButton-root:hover {
+    border: solid 1px $color-blue;
+  }
+
+  .css-1rwt2y5-MuiButtonBase-root-MuiButton-root.active {
+    border: solid 1px $color-white;
+  }
+
+  .css-180lf2n-MuiButtonBase-root-MuiButton-root {
+    border-color: $color-red;
+    @extend .text-r-14-blue;
+    color: $color-red !important;
+  }
+
+
+
 }

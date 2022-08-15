@@ -1,12 +1,12 @@
-@use 'src/assets/scss/basis/index';
+@import 'src/assets/scss/basis/_index.scss';
 
 body {
-  background: index.$color-black;
+  background: $color-black;
 }
 
 .App {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: index.$color-black;
+  background: $color-black;
 }

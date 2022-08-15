@@ -1,4 +1,7 @@
 import '../../assets/scss/basis/_index.scss';
+import './classes.scss';
+
+import {Button} from "@mui/material";
 
 export const Classes = () => {
 
@@ -144,7 +147,14 @@ export const Classes = () => {
       <span className={'text-l-12-white'}>.text-l-12-white</span>
       <span className={'text-error'}>.text-error</span>
 
+      <div className={'three-buttons-field'}>
+          <Button disabled={true} variant={'outlined'}>Inactive</Button>
+          <Button variant={'outlined'}>Primary</Button>
+          <Button variant={'outlined'} color={'error'}>SECONDARY</Button>
+      </div>
+
+
     </div>
-  )
+  );
 
 }
