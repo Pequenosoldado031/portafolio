@@ -1,0 +1,933 @@
+@use "sass:math";
+@import './color';
+
+@font-face {
+  font-family: 'ModernMuseumBold';
+  src: url("../../font/MuseoModerno-Bold.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: 'ModernMuseumLight';
+  src: url("../../font/MuseoModerno-Light.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: 'ModernMuseumRegular';
+  src: url("../../font/MuseoModerno-Regular.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: 'ModernMuseumMedium';
+  src: url("../../font/MuseoModerno-Medium.ttf") format("opentype");
+}
+
+
+@function strip-unit($value) {
+  @return math.div($value, $value * 0 + 1);
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(
+                #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+                ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+$min_width: 500px;
+$max_width: 1920px;
+$min_font: 12px;
+$max_font: 32px;
+
+.text-regular {
+  @include fluid-type($min_width, $max_width, $min_font, $max_font);
+  font-family: ModernMuseumRegular, serif;
+  line-height: 1.25;
+}
+
+.text-bold {
+  @include fluid-type($min-width, $max_width, $min_font, $max_font);
+  font-family: ModernMuseumBold, serif;
+}
+
+.text-medium {
+  @include fluid-type($min_width, $max_width, $min_font, $max_font);
+  font-family: ModernMuseumMedium, serif;
+}
+
+.text-light {
+  @include fluid-type($min_width, $max_width, $min_font, $max_font);
+  font-family: ModernMuseumLight, serif;
+}
+
+//font size 30
+.text-b-30-blue {
+  font-size: 1.875rem;
+  @include fluid-type($min_width, $max_width, 29px, 30px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-blue;
+}
+
+.text-b-30-white {
+  font-size: 1.875rem;
+  @include fluid-type($min_width, $max_width, 29px, 30px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-white;
+}
+
+.text-b-30-gy {
+  font-size: 1.875rem;
+  @include fluid-type($min_width, $max_width, 29px, 30px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-gray;
+}
+
+.text-r-30-blue {
+  font-size: 1.875rem;
+  @include fluid-type($min_width, $max_width, 29px, 30px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-blue;
+}
+
+.text-r-30-white {
+  font-size: 1.875rem;
+  @include fluid-type($min_width, $max_width, 29px, 30px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-white;
+}
+
+.text-r-30-gy {
+  font-size: 1.875rem;
+  @include fluid-type($min_width, $max_width, 29px, 30px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-gray;
+}
+
+.text-m-30-blue {
+  font-size: 1.875rem;
+  @include fluid-type($min_width, $max_width, 29px, 30px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-blue;
+}
+
+.text-m-30-white {
+  font-size: 1.875rem;
+  @include fluid-type($min_width, $max_width, 29px, 30px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-white;
+}
+
+.text-m-30-gy {
+  font-size: 1.875rem;
+  @include fluid-type($min_width, $max_width, 29px, 30px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-gray;
+}
+.text-l-30-blue {
+  font-size: 1.875rem;
+  @include fluid-type($min_width, $max_width, 29px, 30px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-blue;
+}
+
+.text-l-30-white {
+  font-size: 1.875rem;
+  @include fluid-type($min_width, $max_width, 29px, 30px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-white;
+}
+
+.text-l-30-gy {
+  font-size: 1.875rem;
+  @include fluid-type($min_width, $max_width, 29px, 30px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-gray;
+}
+
+//font size 28
+
+.text-b-28-blue {
+  font-size: 1.75rem;
+  @include fluid-type($min_width, $max_width, 27px, 28px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-blue;
+}
+
+.text-b-28-white {
+  font-size: 1.75rem;
+  @include fluid-type($min_width, $max_width, 27px, 28px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-white;
+}
+
+.text-b-28-gy {
+  font-size: 1.75rem;
+  @include fluid-type($min_width, $max_width, 27px, 28px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-gray;
+}
+
+.text-r-28-blue {
+  font-size: 1.75rem;
+  @include fluid-type($min_width, $max_width, 27px, 28px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-blue;
+}
+
+.text-r-28-white {
+  font-size: 1.75rem;
+  @include fluid-type($min_width, $max_width, 27px, 28px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-white;
+}
+
+.text-r-28-gy {
+  font-size: 1.75rem;
+  @include fluid-type($min_width, $max_width, 27px, 28px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-gray;
+}
+
+.text-m-28-blue {
+  font-size: 1.75rem;
+  @include fluid-type($min_width, $max_width, 27px, 28px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-blue;
+}
+
+.text-m-28-white {
+  font-size: 1.75rem;
+  @include fluid-type($min_width, $max_width, 27px, 28px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-white;
+}
+
+.text-m-28-gy {
+  font-size: 1.75rem;
+  @include fluid-type($min_width, $max_width, 27px, 28px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-gray;
+}
+.text-l-28-blue {
+  font-size: 1.75rem;
+  @include fluid-type($min_width, $max_width, 27px, 28px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-blue;
+}
+
+.text-l-28-white {
+  font-size: 1.75rem;
+  @include fluid-type($min_width, $max_width, 27px, 28px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-white;
+}
+
+.text-l-28-gy {
+  font-size: 1.75rem;
+  @include fluid-type($min_width, $max_width, 27px, 28px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-gray;
+}
+
+//font size 26
+
+.text-b-26-blue {
+  font-size: 1.625rem;
+  @include fluid-type($min_width, $max_width, 25px, 26px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-blue;
+}
+
+.text-b-26-white {
+  font-size: 1.625rem;
+  @include fluid-type($min_width, $max_width, 25px, 26px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-white;
+}
+
+.text-b-26-gy {
+  font-size: 1.625rem;
+  @include fluid-type($min_width, $max_width, 25px, 26px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-gray;
+}
+
+.text-r-26-blue {
+  font-size: 1.625rem;
+  @include fluid-type($min_width, $max_width, 25px, 26px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-blue;
+}
+
+.text-r-26-white {
+  font-size: 1.625rem;
+  @include fluid-type($min_width, $max_width, 25px, 26px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-white;
+}
+
+.text-r-26-gy {
+  font-size: 1.625rem;
+  @include fluid-type($min_width, $max_width, 25px, 26px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-gray;
+}
+
+.text-m-26-blue {
+  font-size: 1.625rem;
+  @include fluid-type($min_width, $max_width, 25px, 26px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-blue;
+}
+
+.text-m-26-white {
+  font-size: 1.625rem;
+  @include fluid-type($min_width, $max_width, 25px, 26px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-white;
+}
+
+.text-m-26-gy {
+  font-size: 1.625rem;
+  @include fluid-type($min_width, $max_width, 25px, 26px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-gray;
+}
+.text-l-26-blue {
+  font-size: 1.625rem;
+  @include fluid-type($min_width, $max_width, 25px, 26px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-blue;
+}
+
+.text-l-26-white {
+  font-size: 1.625rem;
+  @include fluid-type($min_width, $max_width, 25px, 26px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-white;
+}
+
+.text-l-26-gy {
+  font-size: 1.625rem;
+  @include fluid-type($min_width, $max_width, 25px, 26px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-gray;
+}
+
+//font size 24
+
+.text-b-24-blue {
+  font-size: 1.5rem;
+  @include fluid-type($min_width, $max_width, 23px, 24px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-blue;
+}
+
+.text-b-24-white {
+  font-size: 1.5rem;
+  @include fluid-type($min_width, $max_width, 23px, 24px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-white;
+}
+
+.text-b-24-gy {
+  font-size: 1.5rem;
+  @include fluid-type($min_width, $max_width, 23px, 24px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-gray;
+}
+
+.text-r-24-blue {
+  font-size: 1.5rem;
+  @include fluid-type($min_width, $max_width, 23px, 24px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-blue;
+}
+
+.text-r-24-white {
+  font-size: 1.5rem;
+  @include fluid-type($min_width, $max_width, 23px, 24px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-white;
+}
+
+.text-r-24-gy {
+  font-size: 1.5rem;
+  @include fluid-type($min_width, $max_width, 23px, 24px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-gray;
+}
+
+.text-m-24-blue {
+  font-size: 1.5rem;
+  @include fluid-type($min_width, $max_width, 23px, 24px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-blue;
+}
+
+.text-m-24-white {
+  font-size: 1.5rem;
+  @include fluid-type($min_width, $max_width, 23px, 24px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-white;
+}
+
+.text-m-24-gy {
+  font-size: 1.5rem;
+  @include fluid-type($min_width, $max_width, 23px, 24px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-gray;
+}
+.text-l-24-blue {
+  font-size: 1.5rem;
+  @include fluid-type($min_width, $max_width, 23px, 24px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-blue;
+}
+
+.text-l-24-white {
+  font-size: 1.5rem;
+  @include fluid-type($min_width, $max_width, 23px, 24px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-white;
+}
+
+.text-l-24-gy {
+  font-size: 1.5rem;
+  @include fluid-type($min_width, $max_width, 23px, 24px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-gray;
+}
+
+//font size 22
+
+.text-b-22-blue {
+  font-size: 1.375rem;
+  @include fluid-type($min_width, $max_width, 21px, 22px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-blue;
+}
+
+.text-b-22-white {
+  font-size: 1.375rem;
+  @include fluid-type($min_width, $max_width, 21px, 22px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-white;
+}
+
+.text-b-22-gy {
+  font-size: 1.375rem;
+  @include fluid-type($min_width, $max_width, 21px, 22px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-gray;
+}
+
+.text-r-22-blue {
+  font-size: 1.375rem;
+  @include fluid-type($min_width, $max_width, 21px, 22px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-blue;
+}
+
+.text-r-22-white {
+  font-size: 1.375rem;
+  @include fluid-type($min_width, $max_width, 21px, 22px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-white;
+}
+
+.text-r-22-gy {
+  font-size: 1.375rem;
+  @include fluid-type($min_width, $max_width, 21px, 22px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-gray;
+}
+
+.text-m-22-blue {
+  font-size: 1.375rem;
+  @include fluid-type($min_width, $max_width, 21px, 22px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-blue;
+}
+
+.text-m-22-white {
+  font-size: 1.375rem;
+  @include fluid-type($min_width, $max_width, 21px, 22px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-white;
+}
+
+.text-m-22-gy {
+  font-size: 1.375rem;
+  @include fluid-type($min_width, $max_width, 21px, 22px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-gray;
+}
+.text-l-22-blue {
+  font-size: 1.375rem;
+  @include fluid-type($min_width, $max_width, 21px, 22px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-blue;
+}
+
+.text-l-22-white {
+  font-size: 1.375rem;
+  @include fluid-type($min_width, $max_width, 21px, 22px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-white;
+}
+
+.text-l-22-gy {
+  font-size: 1.375rem;
+  @include fluid-type($min_width, $max_width, 21px, 22px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-gray;
+}
+
+//font size 20
+
+.text-b-20-blue {
+  font-size: 1.25rem;
+  @include fluid-type($min_width, $max_width, 19px, 20px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-blue;
+}
+
+.text-b-20-white {
+  font-size: 1.25rem;
+  @include fluid-type($min_width, $max_width, 19px, 20px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-white;
+}
+
+.text-b-20-gy {
+  font-size: 1.25rem;
+  @include fluid-type($min_width, $max_width, 19px, 20px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-gray;
+}
+
+.text-r-20-blue {
+  font-size: 1.25rem;
+  @include fluid-type($min_width, $max_width, 19px, 20px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-blue;
+}
+
+.text-r-20-white {
+  font-size: 1.25rem;
+  @include fluid-type($min_width, $max_width, 19px, 20px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-white;
+}
+
+.text-r-20-gy {
+  font-size: 1.25rem;
+  @include fluid-type($min_width, $max_width, 19px, 20px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-gray;
+}
+
+.text-m-20-blue {
+  font-size: 1.25rem;
+  @include fluid-type($min_width, $max_width, 19px, 20px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-blue;
+}
+
+.text-m-20-white {
+  font-size: 1.25rem;
+  @include fluid-type($min_width, $max_width, 19px, 20px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-white;
+}
+
+.text-m-20-gy {
+  font-size: 1.25rem;
+  @include fluid-type($min_width, $max_width, 19px, 20px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-gray;
+}
+.text-l-20-blue {
+  font-size: 1.25rem;
+  @include fluid-type($min_width, $max_width, 19px, 20px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-blue;
+}
+
+.text-l-20-white {
+  font-size: 1.25rem;
+  @include fluid-type($min_width, $max_width, 19px, 20px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-white;
+}
+
+.text-l-20-gy {
+  font-size: 1.25rem;
+  @include fluid-type($min_width, $max_width, 19px, 20px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-gray;
+}
+
+//font size 18
+
+.text-b-18-blue {
+  font-size: 1.125rem;
+  @include fluid-type($min_width, $max_width, 17px, 18px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-blue;
+}
+
+.text-b-18-white {
+  font-size: 1.125rem;
+  @include fluid-type($min_width, $max_width, 17px, 18px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-white;
+}
+
+.text-b-18-gy {
+  font-size: 1.125rem;
+  @include fluid-type($min_width, $max_width, 17px, 18px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-gray;
+}
+
+.text-r-18-blue {
+  font-size: 1.125rem;
+  @include fluid-type($min_width, $max_width, 17px, 18px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-blue;
+}
+
+.text-r-18-white {
+  font-size: 1.125rem;
+  @include fluid-type($min_width, $max_width, 17px, 18px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-white;
+}
+
+.text-r-18-gy {
+  font-size: 1.125rem;
+  @include fluid-type($min_width, $max_width, 17px, 18px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-gray;
+}
+
+.text-m-18-blue {
+  font-size: 1.125rem;
+  @include fluid-type($min_width, $max_width, 17px, 18px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-blue;
+}
+
+.text-m-18-white {
+  font-size: 1.125rem;
+  @include fluid-type($min_width, $max_width, 17px, 18px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-white;
+}
+
+.text-m-18-gy {
+  font-size: 1.125rem;
+  @include fluid-type($min_width, $max_width, 17px, 18px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-gray;
+}
+.text-l-18-blue {
+  font-size: 1.125rem;
+  @include fluid-type($min_width, $max_width, 17px, 18px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-blue;
+}
+
+.text-l-18-white {
+  font-size: 1.125rem;
+  @include fluid-type($min_width, $max_width, 17px, 18px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-white;
+}
+
+.text-l-18-gy {
+  font-size: 1.125rem;
+  @include fluid-type($min_width, $max_width, 17px, 18px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-gray;
+}
+
+
+//font size 16
+
+.text-b-16-blue {
+  font-size: 1rem;
+  @include fluid-type($min_width, $max_width, 15px, 16px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-blue;
+}
+
+.text-b-16-white {
+  font-size: 1rem;
+  @include fluid-type($min_width, $max_width, 15px, 16px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-white;
+}
+
+.text-b-16-gy {
+  font-size: 1rem;
+  @include fluid-type($min_width, $max_width, 15px, 16px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-gray;
+}
+
+.text-r-16-blue {
+  font-size: 1rem;
+  @include fluid-type($min_width, $max_width, 15px, 16px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-blue;
+}
+
+.text-r-16-white {
+  font-size: 1rem;
+  @include fluid-type($min_width, $max_width, 15px, 16px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-white;
+}
+
+.text-r-16-gy {
+  font-size: 1rem;
+  @include fluid-type($min_width, $max_width, 15px, 16px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-gray;
+}
+
+.text-m-16-blue {
+  font-size: 1rem;
+  @include fluid-type($min_width, $max_width, 15px, 16px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-blue;
+}
+
+.text-m-16-white {
+  font-size: 1rem;
+  @include fluid-type($min_width, $max_width, 15px, 16px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-white;
+}
+
+.text-m-16-gy {
+  font-size: 1rem;
+  @include fluid-type($min_width, $max_width, 15px, 16px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-gray;
+}
+.text-l-16-blue {
+  font-size: 1rem;
+  @include fluid-type($min_width, $max_width, 15px, 16px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-blue;
+}
+
+.text-l-16-white {
+  font-size: 1rem;
+  @include fluid-type($min_width, $max_width, 15px, 16px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-white;
+}
+
+.text-l-16-gy {
+  font-size: 1rem;
+  @include fluid-type($min_width, $max_width, 15px, 16px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-gray;
+}
+
+//font size 14
+
+.text-b-14-blue {
+  font-size: 0.875rem;
+  @include fluid-type($min_width, $max_width, 13px, 14px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-blue;
+}
+
+.text-b-14-white {
+  font-size: 0.875rem;
+  @include fluid-type($min_width, $max_width, 13px, 14px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-white;
+}
+
+.text-b-14-gy {
+  font-size: 0.875rem;
+  @include fluid-type($min_width, $max_width, 13px, 14px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-gray;
+}
+
+.text-r-14-blue {
+  font-size: 0.875rem;
+  @include fluid-type($min_width, $max_width, 13px, 14px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-blue;
+}
+
+.text-r-14-white {
+  font-size: 0.875rem;
+  @include fluid-type($min_width, $max_width, 13px, 14px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-white;
+}
+
+.text-r-14-gy {
+  font-size: 0.875rem;
+  @include fluid-type($min_width, $max_width, 13px, 14px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-gray;
+}
+
+.text-m-14-blue {
+  font-size: 0.875rem;
+  @include fluid-type($min_width, $max_width, 13px, 14px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-blue;
+}
+
+.text-m-14-white {
+  font-size: 0.875rem;
+  @include fluid-type($min_width, $max_width, 13px, 14px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-white;
+}
+
+.text-m-14-gy {
+  font-size: 0.875rem;
+  @include fluid-type($min_width, $max_width, 13px, 14px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-gray;
+}
+.text-l-14-blue {
+  font-size: 0.875rem;
+  @include fluid-type($min_width, $max_width, 13px, 14px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-blue;
+}
+
+.text-l-14-white {
+  font-size: 0.875rem;
+  @include fluid-type($min_width, $max_width, 13px, 14px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-white;
+}
+
+.text-l-14-gy {
+  font-size: 0.875rem;
+  @include fluid-type($min_width, $max_width, 13px, 14px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-gray;
+}
+
+//font size 12
+
+.text-b-12-blue {
+  font-size: 0.75rem;
+  @include fluid-type($min_width, $max_width, 11px, 12px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-blue;
+}
+
+.text-b-12-white {
+  font-size: 0.75rem;
+  @include fluid-type($min_width, $max_width, 11px, 12px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-white;
+}
+
+.text-b-12-gy {
+  font-size: 0.75rem;
+  @include fluid-type($min_width, $max_width, 11px, 12px);
+  font-family: ModernMuseumBold, serif;
+  color: $color-gray;
+}
+
+.text-r-12-blue {
+  font-size: 0.75rem;
+  @include fluid-type($min_width, $max_width, 11px, 12px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-blue;
+}
+
+.text-r-12-white {
+  font-size: 0.75rem;
+  @include fluid-type($min_width, $max_width, 11px, 12px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-white;
+}
+
+.text-r-12-gy {
+  font-size: 0.75rem;
+  @include fluid-type($min_width, $max_width, 11px, 12px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-gray;
+}
+
+.text-m-12-blue {
+  font-size: 0.75rem;
+  @include fluid-type($min_width, $max_width, 11px, 12px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-blue;
+}
+
+.text-m-12-white {
+  font-size: 0.75rem;
+  @include fluid-type($min_width, $max_width, 11px, 12px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-white;
+}
+
+.text-m-12-gy {
+  font-size: 0.75rem;
+  @include fluid-type($min_width, $max_width, 11px, 12px);
+  font-family: ModernMuseumMedium, serif;
+  color: $color-gray;
+}
+.text-l-12-blue {
+  font-size: 0.75rem;
+  @include fluid-type($min_width, $max_width, 11px, 12px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-blue;
+}
+
+.text-l-12-white {
+  font-size: 0.75rem;
+  @include fluid-type($min_width, $max_width, 11px, 12px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-white;
+}
+
+.text-l-12-gy {
+  font-size: 0.75rem;
+  @include fluid-type($min_width, $max_width, 11px, 12px);
+  font-family: ModernMuseumLight, serif;
+  color: $color-gray;
+}
+
+.text-error {
+  font-size: 0.75rem;
+  @include fluid-type($min_width, $max_width, 11px, 12px);
+  font-family: ModernMuseumRegular, serif;
+  color: $color-red;
+}
+
